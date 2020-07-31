@@ -12,5 +12,9 @@
   },
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "@types/jsdom": "^16.2.3",
+    "jsdom": "^16.3.0"
   }
 }
