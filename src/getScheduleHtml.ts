@@ -6,12 +6,12 @@ const OPTIONS = {
   path: '/',
   method: 'GET',
   headers: {
-    Cookie: 'timezone=Asia/Tokyo'
-  }
+    Cookie: 'timezone=Asia/Tokyo',
+  },
 }
 
 function getScheduleHtml(): Promise<string> {
-  const chunks: Uint8Array[] = [];
+  const chunks: Uint8Array[] = []
 
   return new Promise((resolve, reject) => {
     const req = https.request(OPTIONS, res => {
