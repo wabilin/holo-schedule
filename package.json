@@ -5,5 +5,8 @@
   "main": "index.js",
   "author": "wabilin",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
 }
