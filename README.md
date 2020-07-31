@@ -1,5 +1,7 @@
 # holo-schedule
 
+[![npm version](https://badge.fury.io/js/holo-schedule.svg)](https://badge.fury.io/js/holo-schedule)
+
 > I love Haachama.
 
 Hololive schedule crawler and parser.
