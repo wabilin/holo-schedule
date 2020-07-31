@@ -118,3 +118,6 @@ dist
 
 # editor
 .vscode
+
+# dist
+/lib
