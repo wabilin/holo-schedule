@@ -1,6 +1,5 @@
 import https from 'https'
 
-
 const OPTIONS = {
   hostname: 'schedule.hololive.tv',
   port: 443,

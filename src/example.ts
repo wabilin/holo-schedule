@@ -5,8 +5,7 @@ async function main() {
   const html = await getScheduleHtml();
   const parsed = parse(html)
 
-  // console.log(html.split('\n'))
-  console.log(parsed)
+  console.log(parsed.lives)
 }
 
 main().catch(e => { console.error(e) })
