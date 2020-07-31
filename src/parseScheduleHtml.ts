@@ -1,25 +1,25 @@
-import { JSDOM } from "jsdom";
-import { mapNodeList } from "./util";
+import { JSDOM } from 'jsdom'
+import { mapNodeList } from './util'
 
 function selectTrimTextContent(ele: Element, selector: string): string {
- return ele.querySelector(selector)?.textContent?.replace(/\s+/g, "") || "";
+  return ele.querySelector(selector)?.textContent?.replace(/\s+/g, '') || ''
 }
 
 function dataFromAThumbnail(thumb: Element) {
-  const time = selectTrimTextContent(thumb, ".datetime")
-  const name = selectTrimTextContent(thumb, ".name")
+  const time = selectTrimTextContent(thumb, '.datetime')
+  const name = selectTrimTextContent(thumb, '.name')
 
   const images = mapNodeList(
-    thumb.querySelectorAll("img"),
-    (img) => img.src
+    thumb.querySelectorAll('img'),
+    (img) => img.src,
   )
-  .filter((src) => src.startsWith("https://yt3.ggpht.com"));
+    .filter((src) => src.startsWith('https://yt3.ggpht.com'))
 
   return {
     time,
     name,
     images,
-  };
+  }
 }
 
 interface LiveBlock {
@@ -29,8 +29,8 @@ interface LiveBlock {
 }
 
 function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
-  const { window } = new JSDOM(html);
-  const { document } = window;
+  const { window } = new JSDOM(html)
+  const { document } = window
   const year = (new Date()).getFullYear().toString()
 
   const rows = document.querySelectorAll('#all > .container > .row')
@@ -42,32 +42,32 @@ function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
   rows.forEach(row => {
     const dateDiv = row.querySelector('.holodule')
     if (dateDiv) {
-      date = dateDiv.textContent?.replace(/\s+/g, "") || "";
+      date = dateDiv.textContent?.replace(/\s+/g, '') || ''
       date = date.match(/\d+\/\d+/)![0].replace('/', '-')
     } else {
-      const allThumbnail = row.querySelectorAll("a.thumbnail");
+      const allThumbnail = row.querySelectorAll('a.thumbnail')
       allThumbnail.forEach(thumbnail => {
         const { time, name, images } = dataFromAThumbnail(thumbnail)
         lives.push({
           images,
           time: new Date(`${year}-${date}T${time}:00+09:00`),
           streamer: name,
-        });
+        })
       })
     }
   })
 
-  return lives;
+  return lives
 }
 
 type StreamerImageDict = Record<string, string>
 type ImageStreamerDict = Record<string, string>
 
 function nextStreamerImageDict(liveBlocks: LiveBlock[], oldDict: StreamerImageDict) {
-  const dict = {...oldDict}
+  const dict = { ...oldDict }
   liveBlocks.forEach(({ images, streamer }) => {
-    dict[streamer] = images[0];
-  });
+    dict[streamer] = images[0]
+  })
 
   return dict
 }
@@ -99,7 +99,7 @@ interface ParseResult {
  */
 function parseScheduleHtml(
   html: string | Buffer,
-  storedDict: StreamerImageDict = {}
+  storedDict: StreamerImageDict = {},
 ): ParseResult {
   const liveBlocks = parseToLiveBlocks(html)
   const streamerImageDict = nextStreamerImageDict(liveBlocks, storedDict)
@@ -117,7 +117,7 @@ function parseScheduleHtml(
     }
   })
 
-  return { lives, dict };
+  return { lives, dict }
 }
 
-export default parseScheduleHtml;
+export default parseScheduleHtml
