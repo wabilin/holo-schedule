@@ -1,0 +1,9 @@
+{
+  "name": "holo-schedule-parser",
+  "version": "0.0.1",
+  "description": "Hololive schedule parser",
+  "main": "index.js",
+  "author": "wabilin",
+  "license": "MIT",
+  "private": false
+}
