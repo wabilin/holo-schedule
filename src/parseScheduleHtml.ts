@@ -69,7 +69,7 @@ function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
   return lives
 }
 
-type StreamerImageDict = Record<string, string>
+export type StreamerImageDict = Record<string, string>
 type ImageStreamerDict = Record<string, string>
 
 function nextStreamerImageDict(liveBlocks: LiveBlock[], oldDict: StreamerImageDict) {
@@ -90,7 +90,7 @@ function reverseDict(dict: StreamerImageDict): ImageStreamerDict {
   return reversed
 }
 
-interface LiveInfo {
+export interface LiveInfo {
   time: Date
   link: string
   streamer: string
