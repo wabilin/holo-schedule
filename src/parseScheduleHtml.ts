@@ -131,7 +131,7 @@ function parseScheduleHtml(
     }
   })
 
-  return { lives, dict }
+  return { lives, dict: streamerImageDict }
 }
 
 export default parseScheduleHtml
