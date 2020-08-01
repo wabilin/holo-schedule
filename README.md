@@ -16,10 +16,14 @@ npm install holo-schedule
 
 ## Usage
 
-```js
-const { parseScheduleHtml, getScheduleHtml } = require('holo-schedule')
+```ts
+import parseScheduleHtml from 'holo-schedule'
+// or:
+// const parseScheduleHtml  = require('holo-schedule').default
 
-// You can also get html by yourself
+import getScheduleHtml from 'holo-schedule/lib/getScheduleHtml'
+
+// You can also get the html by yourself
 const html = await getScheduleHtml()
 
 // The dict stores steamers' icon data, you can save for using next time
