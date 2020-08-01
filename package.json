@@ -1,10 +1,13 @@
 {
   "name": "holo-schedule",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Hololive schedule parser",
   "main": "lib/index.js",
   "types": "lib",
-  "files": ["lib", "src"],
+  "files": [
+    "lib",
+    "src"
+  ],
   "author": "wabilin",
   "license": "MIT",
   "private": false,
