@@ -36,16 +36,19 @@ Gets list like
 ```
 [
   {
-    time: 2020-07-30T08:01:00.000Z,
-    streamer: '天音かなた',
-    guests: [ '赤井はあと', '姫森ルーナ' ]
+    time: 2020-07-31T11:02:00.000Z,
+    streamer: 'アステル・レダ',
+    guests: [ '鏡見キラ', '奏手イヅル' ],
+    link: 'https://www.youtube.com/watch?v=WntgMec1Q6A',
+    livePreviewImage: 'https://img.youtube.com/vi/WntgMec1Q6A/mqdefault.jpg'
   },
   {
-    time: 2020-07-30T08:01:00.000Z,
-    streamer: '姫森ルーナ',
-    guests: [ '赤井はあと', '天音かなた' ]
+    time: 2020-08-01T10:00:00.000Z,
+    streamer: '赤井はあと',
+    guests: [],
+    link: 'https://www.youtube.com/watch?v=bYKeO_RKh6I',
+    livePreviewImage: 'https://img.youtube.com/vi/bYKeO_RKh6I/mqdefault.jpg'
   },
-  { time: 2020-07-30T08:20:00.000Z, streamer: 'ロボ子さん', guests: [] },
   ...
 ]
 ```
