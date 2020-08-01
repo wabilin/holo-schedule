@@ -4,6 +4,7 @@
   "description": "Hololive schedule parser",
   "main": "lib/index.js",
   "types": "lib",
+  "files": ["lib", "src"],
   "author": "wabilin",
   "license": "MIT",
   "private": false,
