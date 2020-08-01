@@ -13,19 +13,24 @@ function dataFromAThumbnail(thumb: Element) {
     thumb.querySelectorAll('img'),
     (img) => img.src,
   )
-    .filter((src) => src.startsWith('https://yt3.ggpht.com'))
+
+  const avatarImages = images.filter((src) => src.startsWith('https://yt3.ggpht.com'))
+  const livePreviewImage = images.find(src => src.startsWith('https://img.youtube.com/')) || ''
 
   return {
     time,
     name,
-    images,
+    avatarImages,
+    livePreviewImage,
   }
 }
 
 interface LiveBlock {
-  time: Date,
-  streamer: string,
-  images: string[],
+  time: Date
+  streamer: string
+  avatarImages: string[]
+  livePreviewImage: string
+  link: string
 }
 
 function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
@@ -45,11 +50,15 @@ function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
       date = dateDiv.textContent?.replace(/\s+/g, '') || ''
       date = date.match(/\d+\/\d+/)![0].replace('/', '-')
     } else {
-      const allThumbnail = row.querySelectorAll('a.thumbnail')
+      const allThumbnail: NodeListOf<HTMLAnchorElement> = row.querySelectorAll('a.thumbnail')
       allThumbnail.forEach(thumbnail => {
-        const { time, name, images } = dataFromAThumbnail(thumbnail)
+        const link = thumbnail.href
+        const { time, name, avatarImages, livePreviewImage } = dataFromAThumbnail(thumbnail)
+
         lives.push({
-          images,
+          link,
+          avatarImages,
+          livePreviewImage,
           time: new Date(`${year}-${date}T${time}:00+09:00`),
           streamer: name,
         })
@@ -65,7 +74,7 @@ type ImageStreamerDict = Record<string, string>
 
 function nextStreamerImageDict(liveBlocks: LiveBlock[], oldDict: StreamerImageDict) {
   const dict = { ...oldDict }
-  liveBlocks.forEach(({ images, streamer }) => {
+  liveBlocks.forEach(({ avatarImages: images, streamer }) => {
     dict[streamer] = images[0]
   })
 
@@ -83,7 +92,9 @@ function reverseDict(dict: StreamerImageDict): ImageStreamerDict {
 
 interface LiveInfo {
   time: Date
+  link: string
   streamer: string
+  livePreviewImage: string
   guests: string[]
 }
 
@@ -103,17 +114,20 @@ function parseScheduleHtml(
 ): ParseResult {
   const liveBlocks = parseToLiveBlocks(html)
   const streamerImageDict = nextStreamerImageDict(liveBlocks, storedDict)
+
   const dict = reverseDict(streamerImageDict)
 
   const lives = liveBlocks.map(liveBlocks => {
-    const { streamer, images, time } = liveBlocks
+    const { streamer, avatarImages, time, link, livePreviewImage } = liveBlocks
 
-    const guests = images.splice(1).map(x => dict[x]).filter(Boolean)
+    const guests = avatarImages.splice(1).map(x => dict[x]).filter(Boolean)
 
     return {
       time,
       streamer,
       guests,
+      link,
+      livePreviewImage,
     }
   })
 
