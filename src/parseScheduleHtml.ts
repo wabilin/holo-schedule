@@ -2,7 +2,7 @@ import { JSDOM } from 'jsdom'
 import { mapNodeList } from './util'
 
 function selectTrimTextContent(ele: Element, selector: string): string {
-  return ele.querySelector(selector)?.textContent?.replace(/\s+/g, '') || ''
+  return ele.querySelector(selector)?.textContent?.trim() || ''
 }
 
 function dataFromAThumbnail(thumb: Element) {
