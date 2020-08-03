@@ -49,21 +49,21 @@ function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
     if (dateDiv) {
       date = dateDiv.textContent?.replace(/\s+/g, '') || ''
       date = date.match(/\d+\/\d+/)![0].replace('/', '-')
-    } else {
-      const allThumbnail: NodeListOf<HTMLAnchorElement> = row.querySelectorAll('a.thumbnail')
-      allThumbnail.forEach(thumbnail => {
-        const link = thumbnail.href
-        const { time, name, avatarImages, livePreviewImage } = dataFromAThumbnail(thumbnail)
-
-        lives.push({
-          link,
-          avatarImages,
-          livePreviewImage,
-          time: new Date(`${year}-${date}T${time}:00+09:00`),
-          streamer: name,
-        })
-      })
     }
+
+    const allThumbnail: NodeListOf<HTMLAnchorElement> = row.querySelectorAll('a.thumbnail')
+    allThumbnail.forEach(thumbnail => {
+      const link = thumbnail.href
+      const { time, name, avatarImages, livePreviewImage } = dataFromAThumbnail(thumbnail)
+
+      lives.push({
+        link,
+        avatarImages,
+        livePreviewImage,
+        time: new Date(`${year}-${date}T${time}:00+09:00`),
+        streamer: name,
+      })
+    })
   })
 
   return lives
