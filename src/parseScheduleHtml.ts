@@ -31,6 +31,7 @@ interface LiveBlock {
   avatarImages: string[]
   livePreviewImage: string
   link: string
+  streaming: boolean
 }
 
 function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
@@ -54,6 +55,7 @@ function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
     const allThumbnail: NodeListOf<HTMLAnchorElement> = row.querySelectorAll('a.thumbnail')
     allThumbnail.forEach(thumbnail => {
       const link = thumbnail.href
+      const streaming = thumbnail.style.borderColor === 'red'
       const { time, name, avatarImages, livePreviewImage } = dataFromAThumbnail(thumbnail)
 
       lives.push({
@@ -62,6 +64,7 @@ function parseToLiveBlocks(html: string | Buffer): LiveBlock[] {
         livePreviewImage,
         time: new Date(`${year}-${date}T${time}:00+09:00`),
         streamer: name,
+        streaming,
       })
     })
   })
@@ -93,14 +96,20 @@ function reverseDict(dict: StreamerImageDict): ImageStreamerDict {
 export interface LiveInfo {
   time: Date
   link: string
+  videoId: string
   streamer: string
   livePreviewImage: string
   guests: string[]
+  streaming: boolean
 }
 
 interface ParseResult {
   lives: LiveInfo[]
   dict: StreamerImageDict
+}
+
+function getVideoId(link: string): string {
+  return link.replace('https://www.youtube.com/watch?v=', '')
 }
 
 /**
@@ -118,16 +127,19 @@ function parseScheduleHtml(
   const dict = reverseDict(streamerImageDict)
 
   const lives = liveBlocks.map(liveBlocks => {
-    const { streamer, avatarImages, time, link, livePreviewImage } = liveBlocks
+    const { streamer, avatarImages, time, link, livePreviewImage, streaming } = liveBlocks
 
     const guests = avatarImages.splice(1).map(x => dict[x]).filter(Boolean)
+    const videoId = getVideoId(link)
 
     return {
       time,
       streamer,
       guests,
       link,
+      videoId,
       livePreviewImage,
+      streaming,
     }
   })
 
