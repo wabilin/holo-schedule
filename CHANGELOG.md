@@ -1,3 +1,11 @@
+## [0.5.1](https://github.com/wabilin/holo-schedule/compare/v0.5.0...v0.5.1) (2021-12-25)
+
+
+### Bug Fixes
+
+* add npm-shrinkwrap.json in release ([70fc172](https://github.com/wabilin/holo-schedule/commit/70fc172cfd56ba9253f0b52dfb3d79c3603a5bd4))
+* hanlde live image not from youtube ([#26](https://github.com/wabilin/holo-schedule/issues/26)) ([1f26ed8](https://github.com/wabilin/holo-schedule/commit/1f26ed8b33da2bd965dc55abfbb84529ab494c24))
+
 # [0.5.0](https://github.com/wabilin/holo-schedule/compare/v0.4.0...v0.5.0) (2021-12-25)
 
 
