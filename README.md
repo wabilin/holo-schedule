@@ -54,3 +54,6 @@ Gets list like
 ```
 
 For detail, see the TypeScript definition.
+
+### Usage Example
+- [Holo Data](https://github.com/holonow/holo-data)
