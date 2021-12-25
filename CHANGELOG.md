@@ -1,3 +1,11 @@
+## [0.5.2](https://github.com/wabilin/holo-schedule/compare/v0.5.1...v0.5.2) (2021-12-25)
+
+
+### Bug Fixes
+
+* **deps:** upgrade out-of-data packages ([#27](https://github.com/wabilin/holo-schedule/issues/27)) ([e799fd0](https://github.com/wabilin/holo-schedule/commit/e799fd0eaf906252f2cd80c5079f2e5ed0685a74))
+* unpin dependencies ([a31813a](https://github.com/wabilin/holo-schedule/commit/a31813a33eeb795a5486325d6e6ac38529677a1f))
+
 ## [0.5.1](https://github.com/wabilin/holo-schedule/compare/v0.5.0...v0.5.1) (2021-12-25)
 
 
