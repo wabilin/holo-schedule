@@ -37,7 +37,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "eslint src/**"
+    "lint": "eslint src/**",
+    "release": "yarn build && semantic-release"
   },
   "dependencies": {
     "jsdom": "^16.3.0"
