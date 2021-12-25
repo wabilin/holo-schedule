@@ -15,7 +15,9 @@ function dataFromAThumbnail(thumb: Element) {
   )
 
   const avatarImages = images.filter((src) => src.startsWith('https://yt3.ggpht.com'))
-  const livePreviewImage = images.find(src => src.startsWith('https://img.youtube.com/')) || ''
+  const livePreviewImage = images.find(src => src.startsWith('https://img.youtube.com/')) ||
+    images.find(src => src.startsWith('https://schedule-static.hololive.tv/image/')) ||
+    ''
 
   return {
     time,
