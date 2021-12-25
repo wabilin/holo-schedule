@@ -11,6 +11,7 @@
         "assets": [
           "CHANGELOG.md",
           "package.json",
+          "npm-shrinkwrap.json",
           "yarn.lock"
         ]
       }
