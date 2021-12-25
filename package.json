@@ -1,6 +1,6 @@
 {
   "name": "holo-schedule",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Hololive schedule parser",
   "main": "lib/index.js",
   "types": "lib",

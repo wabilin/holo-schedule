@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/wabilin/holo-schedule/compare/v0.4.0...v0.5.0) (2021-12-25)
+
+
+### Features
+
+* add semantic-release/github in release ([31ccef3](https://github.com/wabilin/holo-schedule/commit/31ccef38e3c93ad24e4cea0f9a6bd47daa78b04c))
+
 # [0.4.0](https://github.com/wabilin/holo-schedule/compare/v0.3.0...v0.4.0) (2021-12-25)
 
 
