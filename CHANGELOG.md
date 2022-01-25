@@ -1,3 +1,10 @@
+## [0.5.3](https://github.com/wabilin/holo-schedule/compare/v0.5.2...v0.5.3) (2022-01-25)
+
+
+### Bug Fixes
+
+* **deps:** bump node-fetch from 2.6.6 to 2.6.7 ([#29](https://github.com/wabilin/holo-schedule/issues/29)) ([00af8ce](https://github.com/wabilin/holo-schedule/commit/00af8ce749b911b7875702847b0c46c793090703))
+
 ## [0.5.2](https://github.com/wabilin/holo-schedule/compare/v0.5.1...v0.5.2) (2021-12-25)
 
 
