@@ -1,3 +1,10 @@
+## [0.5.4](https://github.com/wabilin/holo-schedule/compare/v0.5.3...v0.5.4) (2022-01-27)
+
+
+### Bug Fixes
+
+* **codeql:** substring sanitization warning ([#30](https://github.com/wabilin/holo-schedule/issues/30)) ([2054eda](https://github.com/wabilin/holo-schedule/commit/2054eda658f98de0ec44b5f3db5b70c8c8774a0b))
+
 ## [0.5.3](https://github.com/wabilin/holo-schedule/compare/v0.5.2...v0.5.3) (2022-01-25)
 
 
