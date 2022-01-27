@@ -5,6 +5,15 @@ function selectTrimTextContent(ele: Element, selector: string): string {
   return ele.querySelector(selector)?.textContent?.trim() || ''
 }
 
+const livePreviewImageHosts: readonly string[] = [
+  'img.youtube.com',
+  'schedule-static.hololive.tv',
+] as const
+
+function hostOf(src: string) {
+  return new URL(src).host
+}
+
 function dataFromAThumbnail(thumb: Element) {
   const time = selectTrimTextContent(thumb, '.datetime')
   const name = selectTrimTextContent(thumb, '.name')
@@ -14,10 +23,9 @@ function dataFromAThumbnail(thumb: Element) {
     (img) => img.src,
   )
 
-  const avatarImages = images.filter((src) => src.startsWith('https://yt3.ggpht.com'))
-  const livePreviewImage = images.find(src => src.startsWith('https://img.youtube.com/')) ||
-    images.find(src => src.startsWith('https://schedule-static.hololive.tv/image/')) ||
-    ''
+  const avatarImages = images.filter((src) => hostOf(src) === 'yt3.ggpht.com')
+  const livePreviewImage =
+    images.find(src => livePreviewImageHosts.includes(hostOf(src))) || ''
 
   return {
     time,
